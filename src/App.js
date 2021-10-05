@@ -1,23 +1,42 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import Board from './components/Board';
 import './App.css';
 
 function App() {
+
+  const [startGame, setStartGame] = useState(true);
+
+  const showStartGames = () =>{
+    setStartGame(!startGame);
+  }
+
+  let start = null;
+
+  if (startGame===true){
+    start = (
+      <div>
+        <Board />
+        </div>  
+    )
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>TIC TAC TOE</h2>
+      <button 
+              type = "button" 
+              className = "btn"
+              onClick = {() => showStartGames()}>
+              Start 
+      </button>
+      <div className = "boar">
+      {start}
+      </div>
+
+      
+      
+
+
     </div>
   );
 }
